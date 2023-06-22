@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { profile } from "../assets/index";
 import { Link } from "react-router-dom";
-
-const FeedMentor = ({ mentorLists, handleDeleteMentor }) => {
+import DataContext from "../Context/DataContext";
+// creating and loading mentors list
+const FeedMentor = () => {
+  const { mentorLists, handleDeleteMentor } = useContext(DataContext);
   return (
     <>
       {mentorLists.map((e, i) => (

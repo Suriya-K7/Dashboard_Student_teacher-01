@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+// for creacting dasboard cards
 const Card = ({ data }) => {
   return (
     <Link
       to={data.title === "No. of Students" ? "/student" : "/mentor"}
       className="col-xl-6 col-md-6 mb-4 text-decoration-none"
     >
-      {/* <div > */}
       <div className={`card border-left-${data.color} shadow h-100 py-2`}>
         <div className="card-body">
           <div className="row no-gutters align-items-center">
@@ -27,7 +26,6 @@ const Card = ({ data }) => {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </Link>
   );
 };

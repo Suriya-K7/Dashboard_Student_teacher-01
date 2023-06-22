@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { profile } from "../assets/index";
 import { Link } from "react-router-dom";
-
-const Feed = ({ students, handleDelete }) => {
+import DataContext from "../Context/DataContext";
+// creating and loading students list
+const Feed = () => {
+  const { students, handleDelete } = useContext(DataContext);
   return (
     <>
       {students.map((e, i) => (

@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import FeedMentor from "./FeedMentor";
 
-const Mentor = ({ mentorLists, handleDeleteMentor }) => {
+const Mentor = () => {
   return (
     <>
       <div className="container">
@@ -18,10 +18,7 @@ const Mentor = ({ mentorLists, handleDeleteMentor }) => {
       </div>
       <Outlet />
       <div className="mt-5">
-        <FeedMentor
-          mentorLists={mentorLists}
-          handleDeleteMentor={handleDeleteMentor}
-        />
+        <FeedMentor />
       </div>
     </>
   );

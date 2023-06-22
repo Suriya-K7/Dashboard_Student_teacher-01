@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import DataContext from "../Context/DataContext";
 
-const EditMentor = ({
-  editMentorName,
-  setEditMentorName,
-  handleEditMentor,
-  handleCancelMentor,
-  mentorLists,
-}) => {
+const EditMentor = () => {
+  let {
+    editMentorName,
+    setEditMentorName,
+    handleEditMentor,
+    handleCancelMentor,
+    mentorLists,
+  } = useContext(DataContext);
   let { id } = useParams();
   let mentor = mentorLists.find((e) => e.id.toString() === id);
   useEffect(() => {

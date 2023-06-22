@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import DataContext from "../Context/DataContext";
 
-const NewMentor = ({
-  newMentor,
-  setNewMentor,
-  handleUpdateMentor,
-  handleCancelMentor,
-}) => {
+const NewMentor = () => {
+  const { newMentor, setNewMentor, handleUpdateMentor, handleCancelMentor } =
+    useContext(DataContext);
   return (
     <>
       <form className="NewTask" onSubmit={(e) => e.preventDefault()}>

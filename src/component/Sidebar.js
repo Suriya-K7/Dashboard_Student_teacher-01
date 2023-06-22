@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import DataContext from "../Context/DataContext";
 
-const Sidebar = ({ setToggle, toggle, handleToggle, width }) => {
+const Sidebar = () => {
+  const { setToggle, toggle, handleToggle, width } = useContext(DataContext);
   return (
     <>
       <ul
@@ -53,6 +55,7 @@ const Sidebar = ({ setToggle, toggle, handleToggle, width }) => {
           </Link>
         </li>
         <hr className="sidebar-divider" />
+        {/* manual side bar toggle */}
         <div className="text-center d-none d-md-inline">
           <button
             className="rounded-circle border-0"

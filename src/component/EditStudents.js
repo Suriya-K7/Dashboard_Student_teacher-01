@@ -1,20 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import DataContext from "../Context/DataContext";
 
-const EditStudents = ({
-  editStudentName,
-  setEditStudentName,
-  editcourse,
-  setEditCourse,
-  editMentor,
-  setEditMentor,
-  handleUpdate,
-  handleCancel,
-  students,
-  mentorLists,
-}) => {
+const EditStudents = () => {
+  let {
+    editStudentName,
+    setEditStudentName,
+    editcourse,
+    setEditCourse,
+    editMentor,
+    setEditMentor,
+    handleUpdate,
+    handleCancel,
+    students,
+    mentorLists,
+  } = useContext(DataContext);
   let { id } = useParams();
   let student = students.find((e) => e.id.toString() === id);
+  //for loading required data
   useEffect(() => {
     if (student) {
       setEditStudentName(student.name);

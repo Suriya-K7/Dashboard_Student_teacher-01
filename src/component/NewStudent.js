@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import DataContext from "../Context/DataContext";
 
-const NewStudent = ({
-  newStudentName,
-  setNewStudentName,
-  course,
-  setCourse,
-  mentor,
-  setMentor,
-  handleSubmit,
-  handleCancel,
-  mentorLists,
-}) => {
+const NewStudent = () => {
+  const {
+    newStudentName,
+    setNewStudentName,
+    course,
+    setCourse,
+    mentor,
+    setMentor,
+    handleSubmit,
+    handleCancel,
+    mentorLists,
+  } = useContext(DataContext);
   return (
     <>
       <form className="NewTask" onSubmit={(e) => e.preventDefault()}>
@@ -55,8 +57,10 @@ const NewStudent = ({
             onChange={(e) => setMentor(e.target.value)}
           >
             <option value="">Mentor</option>
-            {mentorLists.map((e) => (
-              <option value={e.name}>{e.name}</option>
+            {mentorLists.map((e, i) => (
+              <option key={i} value={e.name}>
+                {e.name}
+              </option>
             ))}
           </select>
         </div>

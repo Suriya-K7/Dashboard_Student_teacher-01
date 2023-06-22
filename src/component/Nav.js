@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { profile } from "../assets/index";
+import DataContext from "../Context/DataContext";
 
-const Nav = ({ handleToggle }) => {
+const Nav = () => {
+  const { handleToggle } = useContext(DataContext);
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* <!-- Sidebar Toggle (Topbar) --> */}

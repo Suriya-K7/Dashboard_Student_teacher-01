@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import Feed from "./Feed";
 
-const Students = ({ students, handleDelete }) => {
+const Students = () => {
   return (
     <>
       <div className="container">
@@ -18,7 +18,7 @@ const Students = ({ students, handleDelete }) => {
       </div>
       <Outlet />
       <div className="mt-5">
-        <Feed students={students} handleDelete={handleDelete} />
+        <Feed />
       </div>
     </>
   );
