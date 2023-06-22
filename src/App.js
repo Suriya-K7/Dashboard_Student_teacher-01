@@ -84,6 +84,11 @@ const App = () => {
         name: "Aktar",
       },
     ];
+    if (window.innerWidth < 600) {
+      setToggle(false);
+    } else if (window.innerWidth > 600 && window.innerWidth < 768) {
+      setToggle(true);
+    }
     setStudents(students);
     setMentorLists(mentors);
   }, []);
