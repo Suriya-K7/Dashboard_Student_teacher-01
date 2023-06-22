@@ -36,7 +36,7 @@ const Sidebar = ({ setToggle, toggle, handleToggle, width }) => {
           <Link
             to="/student"
             className="nav-link collapsed  d-flex align-items-center justify-content-center  flex-column"
-            onClick={handleToggle}
+            onClick={() => (width < 600 ? setToggle(false) : "")}
           >
             <i className="fas fa-fw fa-users"></i> <span>Students</span>
           </Link>
