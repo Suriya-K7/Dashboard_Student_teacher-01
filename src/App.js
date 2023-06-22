@@ -1,39 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Wrapper from "./component/Wrapper";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "./hooks/useWindowSize";
 
 const App = () => {
   let [toggle, setToggle] = useState(true);
-  let cardDatas = [
-    {
-      title: "Earnings (Monthly)",
-      value: "$40,000",
-      color: "primary",
-      icon: "fa-calendar",
-      isProgress: false,
-    },
-    {
-      title: "Earnings (Annual)",
-      value: "$215,000",
-      color: "success",
-      icon: "fa-dollar-sign",
-      isProgress: false,
-    },
-    {
-      title: "Tasks",
-      value: "50",
-      color: "info",
-      icon: "fa-clipboard-list",
-      isProgress: true,
-    },
-    {
-      title: "Pending Requests",
-      value: "18",
-      color: "warning",
-      icon: "fa-comments",
-      isProgress: false,
-    },
-  ];
+  let { width } = useWindowSize();
   window.addEventListener("resize", () => {
     if (window.innerWidth < 600) {
       setToggle(false);
@@ -48,37 +20,76 @@ const App = () => {
       setToggle(true);
     }
   };
-  let [students, setStudents] = useState([
+  let [students, setStudents] = useState([]);
+  let [mentorLists, setMentorLists] = useState([]);
+  let cardDatas = [
     {
-      id: 1,
-      name: "Suriya",
-      course: "MERN",
-      mentor: "Rupan",
+      title: "No. of Students",
+      value: students.length,
+      color: "primary",
+      icon: "fa-users",
     },
     {
-      id: 2,
-      name: "Udhaya",
-      course: "MEAN",
-      mentor: "Sathish",
+      title: "No. of Mentors",
+      value: mentorLists.length,
+      color: "success",
+      icon: "fa-chalkboard-user",
     },
-    {
-      id: 3,
-      name: "Suriya-K7",
-      course: "MEVN",
-      mentor: "Nag",
-    },
-  ]);
+  ];
   let [newStudentName, setNewStudentName] = useState("");
+  let [editStudentName, setEditStudentName] = useState("");
+  let [newMentor, setNewMentor] = useState("");
+  let [editMentorName, setEditMentorName] = useState("");
   let [course, setCourse] = useState("");
   let [mentor, setMentor] = useState("");
-  let [editStudentName, setEditStudentName] = useState("");
   let [editcourse, setEditCourse] = useState("");
   let [editMentor, setEditMentor] = useState("");
   let navigator = useNavigate();
-  useEffect(() => {}, []);
+  useEffect(() => {
+    let students = JSON.parse(localStorage.getItem("students")) || [
+      {
+        id: 1,
+        name: "Suriya",
+        course: "MERN",
+        mentor: "Rupan",
+      },
+      {
+        id: 2,
+        name: "Udhaya",
+        course: "MEAN",
+        mentor: "Satish",
+      },
+      {
+        id: 3,
+        name: "Suriya-K7",
+        course: "MEVN",
+        mentor: "Nag",
+      },
+    ];
+    let mentors = JSON.parse(localStorage.getItem("mentors")) || [
+      {
+        id: 1,
+        name: "Rupan",
+      },
+      {
+        id: 2,
+        name: "Satish",
+      },
+      {
+        id: 3,
+        name: "Nag",
+      },
+      {
+        id: 4,
+        name: "Aktar",
+      },
+    ];
+    setStudents(students);
+    setMentorLists(mentors);
+  }, []);
   let handleSubmit = () => {
     let id = students.length ? students[students.length - 1].id + 1 : 1;
-    if (newStudentName === "" || course === "Course" || mentor === "Mentor") {
+    if (newStudentName === "" || course === "" || mentor === "") {
       alert("Kindly fill all inputs");
     } else {
       let student = {
@@ -101,11 +112,7 @@ const App = () => {
     navigator("/student");
   };
   let handleUpdate = (id) => {
-    if (
-      editStudentName === "" ||
-      editcourse === "Course" ||
-      editMentor === "Mentor"
-    ) {
+    if (editStudentName === "" || editcourse === "" || editMentor === "") {
       alert("Kindly fill all inputs");
     } else {
       let student = students.find((e) => e.id === id);
@@ -126,11 +133,58 @@ const App = () => {
       navigator("/student");
     }
   };
-
   let handleDelete = (id) => {
     let filteredStudents = students.filter((e) => e.id !== id);
     setStudents(filteredStudents);
+    localStorage.setItem("students", JSON.stringify(filteredStudents));
     navigator("/student");
+  };
+
+  let handleUpdateMentor = () => {
+    let id = mentorLists.length
+      ? mentorLists[mentorLists.length - 1].id + 1
+      : 1;
+    if (newMentor === "") {
+      alert("Kindly fill all inputs");
+    } else {
+      let mentor = {
+        id: id,
+        name: newMentor,
+      };
+      let allMentors = [...mentorLists, mentor];
+      setMentorLists(allMentors);
+      localStorage.setItem("mentors", JSON.stringify(allMentors));
+      setNewMentor("");
+      navigator("/mentor");
+    }
+  };
+  let handleCancelMentor = () => {
+    setNewMentor("");
+    navigator("/mentor");
+  };
+  let handleDeleteMentor = (id) => {
+    let filteredMentors = mentorLists.filter((e) => e.id !== id);
+    setMentorLists(filteredMentors);
+    localStorage.setItem("mentors", JSON.stringify(filteredMentors));
+    navigator("/mentor");
+  };
+  let handleEditMentor = (id) => {
+    if (editMentorName === "") {
+      alert("Kindly Mention Mentors Name");
+    } else {
+      let mentor = mentorLists.find((e) => e.id === id);
+      let updatedMentor = {
+        id: mentor.id,
+        name: editMentorName,
+      };
+      let newMentorLists = mentorLists.map((mentor) =>
+        mentor.id === id ? { ...updatedMentor } : mentor
+      );
+      setMentorLists(newMentorLists);
+      localStorage.setItem("mentors", JSON.stringify(newMentorLists));
+      setEditMentorName("");
+      navigator("/mentor");
+    }
   };
   return (
     <div>
@@ -155,6 +209,18 @@ const App = () => {
         setEditMentor={setEditMentor}
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
+        newMentor={newMentor}
+        setNewMentor={setNewMentor}
+        editMentorName={editMentorName}
+        setEditMentorName={setEditMentorName}
+        mentorLists={mentorLists}
+        setMentorLists={setMentorLists}
+        handleDeleteMentor={handleDeleteMentor}
+        handleUpdateMentor={handleUpdateMentor}
+        handleCancelMentor={handleCancelMentor}
+        handleEditMentor={handleEditMentor}
+        width={width}
+        setToggle={setToggle}
       />
     </div>
   );

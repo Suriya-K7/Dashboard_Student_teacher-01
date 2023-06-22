@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ toggle, handleToggle }) => {
+const Sidebar = ({ setToggle, toggle, handleToggle, width }) => {
   return (
     <>
       <ul
@@ -19,10 +19,11 @@ const Sidebar = ({ toggle, handleToggle }) => {
           <div className="sidebar-brand-text mx-3">GUVI</div>
         </li>
         <hr className="sidebar-divider my-0" />
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link
-            className="nav-link  d-flex align-items-center justify-content-center flex-column"
+            className="nav-link collapsed  d-flex align-items-center justify-content-center flex-column"
             to="/"
+            onClick={() => (width < 600 ? setToggle(false) : "")}
           >
             <i className="fas fa-fw fa-tachometer-alt"></i>{" "}
             <span>Dashboard</span>
@@ -35,6 +36,7 @@ const Sidebar = ({ toggle, handleToggle }) => {
           <Link
             to="/student"
             className="nav-link collapsed  d-flex align-items-center justify-content-center  flex-column"
+            onClick={handleToggle}
           >
             <i className="fas fa-fw fa-users"></i> <span>Students</span>
           </Link>
@@ -42,8 +44,9 @@ const Sidebar = ({ toggle, handleToggle }) => {
         <hr className="sidebar-divider" />
         <li className="nav-item">
           <Link
-            to="/student"
+            to="/mentor"
             className="nav-link collapsed  d-flex align-items-center justify-content-center flex-column"
+            onClick={() => (width < 600 ? setToggle(false) : "")}
           >
             <i className="fas fa-sold fa-chalkboard-user"></i>{" "}
             <span>Mentotrs</span>

@@ -11,6 +11,7 @@ const EditStudents = ({
   handleUpdate,
   handleCancel,
   students,
+  mentorLists,
 }) => {
   let { id } = useParams();
   let student = students.find((e) => e.id.toString() === id);
@@ -65,10 +66,11 @@ const EditStudents = ({
             onChange={(e) => setEditMentor(e.target.value)}
           >
             <option value="">Mentor</option>
-            <option value="Rupan">Rupan</option>
-            <option value="Sathish">Sathish</option>
-            <option value="Nag">Nagarajan</option>
-            <option value="Aktar">Aktar</option>
+            {mentorLists.map((e, i) => (
+              <option key={i} value={e.name}>
+                {e.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-group row d-flex align-items-center justify-content-center g-2">

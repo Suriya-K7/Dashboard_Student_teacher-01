@@ -104,29 +104,6 @@ const Nav = ({ handleToggle }) => {
                 </span>
               </div>
             </a>
-            <a className="dropdown-item d-flex align-items-center" href="#!">
-              <div className="mr-3">
-                <div className="icon-circle bg-success">
-                  <i className="fas fa-donate text-white"></i>
-                </div>
-              </div>
-              <div>
-                <div className="small text-gray-500">December 7, 2019</div>
-                $290.29 has been deposited into your account!
-              </div>
-            </a>
-            <a className="dropdown-item d-flex align-items-center" href="#!">
-              <div className="mr-3">
-                <div className="icon-circle bg-warning">
-                  <i className="fas fa-exclamation-triangle text-white"></i>
-                </div>
-              </div>
-              <div>
-                <div className="small text-gray-500">December 2, 2019</div>
-                Spending Alert: We've noticed unusually high spending for your
-                account.
-              </div>
-            </a>
             <a
               className="dropdown-item text-center small text-gray-500"
               href="#!"
@@ -178,23 +155,6 @@ const Nav = ({ handleToggle }) => {
               <div className="dropdown-list-image mr-3">
                 <img
                   className="rounded-circle"
-                  src="img/undraw_profile_2.svg"
-                  alt="..."
-                />
-                <div className="status-indicator"></div>
-              </div>
-              <div>
-                <div className="text-truncate">
-                  I have the photos that you ordered last month, how would you
-                  like them sent to you?
-                </div>
-                <div className="small text-gray-500">Jae Chun · 1d</div>
-              </div>
-            </a>
-            <a className="dropdown-item d-flex align-items-center" href="#!">
-              <div className="dropdown-list-image mr-3">
-                <img
-                  className="rounded-circle"
                   src="img/undraw_profile_3.svg"
                   alt="..."
                 />
@@ -206,23 +166,6 @@ const Nav = ({ handleToggle }) => {
                   progress so far, keep up the good work!
                 </div>
                 <div className="small text-gray-500">Morgan Alvarez · 2d</div>
-              </div>
-            </a>
-            <a className="dropdown-item d-flex align-items-center" href="#!">
-              <div className="dropdown-list-image mr-3">
-                <img
-                  className="rounded-circle"
-                  src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                  alt="..."
-                />
-                <div className="status-indicator bg-success"></div>
-              </div>
-              <div>
-                <div className="text-truncate">
-                  Am I a good boy? The reason I ask is because someone told me
-                  that people say this to all dogs, even if they aren't good...
-                </div>
-                <div className="small text-gray-500">Chicken the Dog · 2w</div>
               </div>
             </a>
             <a

@@ -23,11 +23,28 @@ const Wrapper = ({
   setEditMentor,
   handleUpdate,
   handleDelete,
+  newMentor,
+  setNewMentor,
+  editMentorName,
+  setEditMentorName,
+  mentorLists,
+  setMentorLists,
+  handleDeleteMentor,
+  handleUpdateMentor,
+  handleCancelMentor,
+  handleEditMentor,
+  width,
+  setToggle,
 }) => {
   return (
     <>
       <div id="wrapper">
-        <Sidebar toggle={toggle} handleToggle={handleToggle} />
+        <Sidebar
+          toggle={toggle}
+          setToggle={setToggle}
+          width={width}
+          handleToggle={handleToggle}
+        />
         <Content
           cardDatas={cardDatas}
           handleToggle={handleToggle}
@@ -48,6 +65,16 @@ const Wrapper = ({
           setEditMentor={setEditMentor}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
+          newMentor={newMentor}
+          setNewMentor={setNewMentor}
+          editMentorName={editMentorName}
+          setEditMentorName={setEditMentorName}
+          mentorLists={mentorLists}
+          setMentorLists={setMentorLists}
+          handleDeleteMentor={handleDeleteMentor}
+          handleUpdateMentor={handleUpdateMentor}
+          handleCancelMentor={handleCancelMentor}
+          handleEditMentor={handleEditMentor}
         />
       </div>
     </>

@@ -4,7 +4,10 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import { Route, Routes } from "react-router-dom";
 import Students from "./Students";
-import StudentsLists from "./StudentsLists";
+import Mentor from "./Mentor";
+import NewMentor from "./NewMentor";
+import EditMentor from "./EditMentor";
+// import StudentsLists from "./delete/StudentsLists";
 import NewStudent from "./NewStudent";
 import EditStudents from "./EditStudents";
 
@@ -28,6 +31,15 @@ const Content = ({
   setEditMentor,
   handleUpdate,
   handleDelete,
+  newMentor,
+  setNewMentor,
+  editMentorName,
+  setEditMentorName,
+  mentorLists,
+  handleDeleteMentor,
+  handleUpdateMentor,
+  handleCancelMentor,
+  handleEditMentor,
 }) => {
   return (
     <div id="content-wrapper" className="d-flex flex-column">
@@ -36,7 +48,12 @@ const Content = ({
         <div className="container-fluid">
           <Routes>
             <Route path="/" element={<Dashboard cardDatas={cardDatas} />} />
-            <Route path="/student" element={<Students />}>
+            <Route
+              path="/student"
+              element={
+                <Students students={students} handleDelete={handleDelete} />
+              }
+            >
               <Route
                 path="newstudent"
                 element={
@@ -49,6 +66,7 @@ const Content = ({
                     handleCancel={handleCancel}
                     mentor={mentor}
                     setMentor={setMentor}
+                    mentorLists={mentorLists}
                   />
                 }
               />
@@ -65,14 +83,47 @@ const Content = ({
                     setEditMentor={setEditMentor}
                     handleUpdate={handleUpdate}
                     handleCancel={handleCancel}
+                    mentorLists={mentorLists}
                   />
                 }
               />
             </Route>
-            {/* <Route path="/student/student-list" element={<StudentsLists />} /> */}
+            <Route
+              path="/mentor"
+              element={
+                <Mentor
+                  mentorLists={mentorLists}
+                  handleDeleteMentor={handleDeleteMentor}
+                />
+              }
+            >
+              <Route
+                path="newmentor"
+                element={
+                  <NewMentor
+                    newMentor={newMentor}
+                    setNewMentor={setNewMentor}
+                    handleUpdateMentor={handleUpdateMentor}
+                    handleCancelMentor={handleCancelMentor}
+                  />
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <EditMentor
+                    editMentorName={editMentorName}
+                    setEditMentorName={setEditMentorName}
+                    handleEditMentor={handleEditMentor}
+                    handleCancelMentor={handleCancelMentor}
+                    mentorLists={mentorLists}
+                  />
+                }
+              />
+            </Route>
           </Routes>
-          <StudentsLists students={students} handleDelete={handleDelete} />
 
+          {/* <StudentsLists students={students} handleDelete={handleDelete} /> */}
           {/* <Overview />
           <Projects /> */}
         </div>

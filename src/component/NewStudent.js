@@ -9,6 +9,7 @@ const NewStudent = ({
   setMentor,
   handleSubmit,
   handleCancel,
+  mentorLists,
 }) => {
   return (
     <>
@@ -54,10 +55,9 @@ const NewStudent = ({
             onChange={(e) => setMentor(e.target.value)}
           >
             <option value="">Mentor</option>
-            <option value="Rupan">Rupan</option>
-            <option value="Sathish">Sathish</option>
-            <option value="Nagarajan">Nagarajan</option>
-            <option value="Aktar">Aktar</option>
+            {mentorLists.map((e) => (
+              <option value={e.name}>{e.name}</option>
+            ))}
           </select>
         </div>
         <div className="form-group row d-flex align-items-center justify-content-center g-2">
