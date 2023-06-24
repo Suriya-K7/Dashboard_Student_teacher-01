@@ -21,7 +21,7 @@ const NewMentor = () => {
         </div>
         <div className="form-group row d-flex align-items-center justify-content-center g-2">
           <button
-            className="btn btn-danger mr-2 col-3"
+            className="btn btn-secondary mr-2 col-3"
             onClick={handleCancelMentor}
           >
             Cancel

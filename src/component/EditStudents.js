@@ -77,7 +77,10 @@ const EditStudents = () => {
           </select>
         </div>
         <div className="form-group row d-flex align-items-center justify-content-center g-2">
-          <button className="btn btn-danger mr-2 col-3" onClick={handleCancel}>
+          <button
+            className="btn btn-secondary mr-2 col-3"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
           <button

@@ -25,7 +25,7 @@ const FeedMentor = () => {
                 data-set={e.id}
                 to={`${e.id}`}
               >
-                <button className="btn btn-info  col-12">Edit</button>
+                <button className="btn btn-warning  col-12">Edit</button>
               </Link>
               <button
                 className="btn btn-danger col-md-2 col-3"

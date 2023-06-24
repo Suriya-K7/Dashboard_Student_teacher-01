@@ -23,7 +23,7 @@ const Feed = () => {
               <div className="taskTime px-md-1 col-1">{e.course}</div>
               <div className="taskTime px-md-1 col-2">{e.mentor}</div>
               <Link className="taskTime " data-set={e.id} to={`${e.id}`}>
-                <button className="btn btn-info mx-md-1">Edit</button>
+                <button className="btn btn-warning mx-md-1">Edit</button>
               </Link>
               <button
                 className="btn btn-danger"

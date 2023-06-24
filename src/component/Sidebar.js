@@ -32,7 +32,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <hr className="sidebar-divider" />
-        <div className="sidebar-heading text-center">Management</div>
+        <div className="sidebar-heading text-center text-white">Management</div>
         <hr className="sidebar-divider" />
         <li className="nav-item">
           <Link
